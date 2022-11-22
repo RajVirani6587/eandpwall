@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "716628025691",
+    "project_id": "fir-wall-a4670",
+    "storage_bucket": "fir-wall-a4670.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:716628025691:android:c738e59bb26cdc080a7a7e",
+        "android_client_info": {
+          "package_name": "com.example.eandpwall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "716628025691-gu6v3e17d41crdvadphdkev9oe0l25m8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaCp9BI0Uh3AA_MCzr5_N0fnh1SHgEut4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "716628025691-gu6v3e17d41crdvadphdkev9oe0l25m8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
