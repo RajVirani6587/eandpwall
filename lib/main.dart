@@ -1,4 +1,7 @@
 import 'package:eandpwall/home_screen.dart';
+import 'package:eandpwall/log_out.dart';
+import 'package:eandpwall/login.dart';
+import 'package:eandpwall/splace_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,7 +14,10 @@ void main()async{
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/':(context)=> Home_Screen(),
+        '/':(context)=> splesh_Screen(),
+        'login':(context)=>Login_Screen(),
+        'home':(context)=> Home_Screen(),
+        'out':(context)=>LogOut_Screen(),
       },
     )
   );
