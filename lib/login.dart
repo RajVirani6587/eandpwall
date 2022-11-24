@@ -68,6 +68,11 @@ class _Login_ScreenState extends State<Login_Screen> {
                   child: Center(child: Text("Sign in",style: TextStyle(fontSize: 30,color: Colors.white),)),
                 ),
               ),
+              SizedBox(height: 15,),
+             TextButton(onPressed: ()async{
+               bool msg = await googleLogin(),
+             }, child: Text("Google")),
+
               SizedBox(height: 25,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

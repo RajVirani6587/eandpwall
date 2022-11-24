@@ -1,6 +1,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 Future<String>singup(String e1,String p1) async{
   try {
@@ -50,7 +50,22 @@ bool checkUser(){
   return false;
 }
 
-void logout(){
+void logout()async{
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   firebaseAuth.signOut();
+  GoogleSignIn googleSignIn = GoogleSignIn();
+  await googleSignIn.signOut();
+}
+
+
+Future<bool> googlelogin()async{
+  GoogleSignInAccount? googleSignInAccount = await GoogleSignIn().signIn();
+  GoogleSignInAuthentication? googleSignInAuthentication = await googleSignInAccount ?.authentication;
+  var cred = GoogleAuthProvider.credential(
+    accessToken: googleSignInAuthentication!.accessToken,
+    idToken: googleSignInAuthentication!.idToken,
+  );
+  FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  await firebaseAuth.signInWithCredential(cred);
+  return checkUser();
 }
