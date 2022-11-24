@@ -1,7 +1,8 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 
-Future<String> singup(String e1,String p1) async{
+Future<String>singup(String e1,String p1) async{
   try {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
      await firebaseAuth.createUserWithEmailAndPassword(email: e1, password: p1);
@@ -21,12 +22,12 @@ Future<String> singup(String e1,String p1) async{
 }
 
 
-Future<String> loginEmailPassword(String e1,String p1) async{
-  try {
+Future<String> loginEmailPassword(String email,String password) async{
+   try {
     FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-    await firebaseAuth.createUserWithEmailAndPassword(email: e1, password: p1);
+    await firebaseAuth.signInWithEmailAndPassword(email: email.trim(), password: password.trim()).then((value) => print("Success")).catchError((error)=> print("$error"));
     return "Success";
-  }
+      }
   on FirebaseAuthException catch (e){
     if(e.code == "user-not-found")
     {
