@@ -63,9 +63,12 @@ Future<bool> googlelogin()async{
   GoogleSignInAuthentication? googleSignInAuthentication = await googleSignInAccount ?.authentication;
   var cred = GoogleAuthProvider.credential(
     accessToken: googleSignInAuthentication!.accessToken,
-    idToken: googleSignInAuthentication!.idToken,
-  );
+    idToken: googleSignInAuthentication!.idToken,);
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   await firebaseAuth.signInWithCredential(cred);
   return checkUser();
+}
+
+void tree(){
+
 }
