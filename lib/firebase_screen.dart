@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -63,12 +64,27 @@ Future<bool> googlelogin()async{
   GoogleSignInAuthentication? googleSignInAuthentication = await googleSignInAccount ?.authentication;
   var cred = GoogleAuthProvider.credential(
     accessToken: googleSignInAuthentication!.accessToken,
-    idToken: googleSignInAuthentication!.idToken,);
+    idToken: googleSignInAuthentication.idToken,);
   FirebaseAuth firebaseAuth = FirebaseAuth.instance;
-  await firebaseAuth.signInWithCredential(cred);
+  await firebaseAuth.signInWithCredential(cred).then((value) => print("Success")).catchError((error)=>print("Error $error"));
   return checkUser();
 }
 
-void tree(){
 
+Future<List> userProfile()async{
+  User ? user = FirebaseAuth.instance.currentUser;
+  return [
+    user!.email,
+    user.displayName,
+    user.photoURL,
+  ];
+}
+
+//================================== firestore============================
+
+
+void insertData(){
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  CollectionReference collectionReference = firebaseFirestore.collection("Student");
+  collectionReference.add({}).then((value) => print("Success")).catchError((error)=>print("Error $error"));
 }

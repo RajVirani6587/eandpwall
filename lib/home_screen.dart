@@ -10,8 +10,9 @@ class Home_Screen extends StatefulWidget {
 }
 
 class _Home_ScreenState extends State<Home_Screen> {
-  TextEditingController txtemail  = TextEditingController();
-  TextEditingController txtpassword  = TextEditingController();
+  TextEditingController txtemail = TextEditingController();
+  TextEditingController txtpassword = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -36,7 +37,7 @@ class _Home_ScreenState extends State<Home_Screen> {
               ),
               Container(
                 margin:
-                EdgeInsets.only(left: 25, right: 25, top: 15, bottom: 15),
+                    EdgeInsets.only(left: 25, right: 25, top: 15, bottom: 15),
                 child: TextFormField(
                     controller: txtemail,
                     decoration: InputDecoration(
@@ -57,7 +58,7 @@ class _Home_ScreenState extends State<Home_Screen> {
               ),
               Container(
                 margin:
-                EdgeInsets.only(left: 25, right: 25, top: 15, bottom: 15),
+                    EdgeInsets.only(left: 25, right: 25, top: 15, bottom: 15),
                 child: TextFormField(
                   controller: txtpassword,
                   decoration: InputDecoration(
@@ -71,13 +72,12 @@ class _Home_ScreenState extends State<Home_Screen> {
                 ),
               ),
               InkWell(
-                onTap: () async{
+                onTap: () async {
                   String msg = await singup(txtemail.text, txtpassword.text);
-                  Get.snackbar('${msg}','');
-                  if(msg == "Success")
-                    {
-                        Get.offNamed('out');
-                    }
+                  Get.snackbar('${msg}', '');
+                  if (msg == "Success") {
+                    Get.offNamed('out');
+                  }
                 },
                 child: Container(
                   color: Colors.blue.shade600,
@@ -86,9 +86,9 @@ class _Home_ScreenState extends State<Home_Screen> {
                   height: 40,
                   child: Center(
                       child: Text(
-                        "Sign up",
-                        style: TextStyle(fontSize: 30, color: Colors.white),
-                      )),
+                    "Sign up",
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  )),
                 ),
               ),
               SizedBox(

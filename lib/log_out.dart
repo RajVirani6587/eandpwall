@@ -1,4 +1,5 @@
 import 'package:eandpwall/firebase_screen.dart';
+import 'package:eandpwall/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,20 +11,63 @@ class LogOut_Screen extends StatefulWidget {
 }
 
 class _LogOut_ScreenState extends State<LogOut_Screen> {
+  Homecontroller homecontroller = Get.put(Homecontroller());
+
+  @override
+  void initState() {
+    super.initState();
+    getProfile();
+  }
+
+  void getProfile() async {
+    homecontroller.userdataList.value = await userProfile();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar:AppBar(
+        drawer: Drawer(
+          elevation: 10,
+          child: Container(
+            child: Obx(
+              () => Column(
+                children: [
+                  SizedBox(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Image.network("${homecontroller.userdataList[2]}"),
+                      Column(
+                        children: [
+                          Text("${homecontroller.userdataList[1]}"),
+                          SizedBox(height: 4,),
+                          Text("${homecontroller.userdataList[0]}"),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        appBar: AppBar(
           centerTitle: true,
-           title: Text("Home Screen",),
+          title: Text(
+            "Home Screen",
+          ),
           actions: [
-            IconButton(onPressed: (){
-              logout();
-              Get.offNamed('login');
-            }, icon:Icon(Icons.logout)),
+            IconButton(
+                onPressed: () {
+                  logout();
+                  Get.offNamed('login');
+                },
+                icon: Icon(Icons.logout)),
           ],
-      ),
+        ),
+        body: Center(
+        ),
       ),
     );
   }

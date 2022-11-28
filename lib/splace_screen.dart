@@ -32,7 +32,10 @@ class _splesh_ScreenState extends State<splesh_Screen> {
         ));
   }
   void isLogin(){
-      Timer(Duration(seconds: 3),()=>msg?Get.offAllNamed('out'):Get.offAllNamed('login'), );
+      Timer(
+        Duration(seconds: 3),
+            ()=>msg?Get.offAllNamed('out'):Get.offAllNamed('login'),
+      );
   }
 
 }

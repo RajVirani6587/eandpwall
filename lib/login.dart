@@ -69,6 +69,7 @@ class _Login_ScreenState extends State<Login_Screen> {
                 ),
               ),
               SizedBox(height: 15,),
+
              ElevatedButton(onPressed: ()async{
                bool msg = await googlelogin();
                 if(msg)
